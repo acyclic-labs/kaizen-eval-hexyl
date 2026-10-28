@@ -95,6 +95,11 @@ jobs:
       with:
         targets: ${{ matrix.job.target }}
 
+    - name: Cache cargo registry and build output
+      uses: Swatinem/rust-cache@v2
+      with:
+        key: ${{ matrix.job.target }}
+
     - name: Install cross
       if: matrix.job.use-cross
       uses: taiki-e/install-action@v2
